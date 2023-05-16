@@ -18,9 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ul>
-          <li><Link href={"/"}>Home</Link></li>
-          <li><Link href={"/dashboard"}>Dashboard</Link></li>
-          <li><Link href={"/settings"}>Setting</Link></li>
+          <li><Link prefetch={false} href="/">Home</Link></li>
+          <li><Link prefetch={false} href="/dashboard">Dashboard</Link></li>
+          <li><Link prefetch={false} href="/settings">Setting</Link></li>
         </ul>
         {children}
       </body>
