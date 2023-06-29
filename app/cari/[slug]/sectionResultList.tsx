@@ -1,3 +1,4 @@
+import { ListItemSearch } from "@/components/ListItemSearch";
 import Link from "next/link";
 import React from "react";
 import useSWR from "swr";
@@ -16,22 +17,22 @@ export default function SectionResultList({ query }: Props) {
 
   return (
     <div>
-      <p>Hasil Pencarian: {query}</p>
+      <p>
+        Hasil Pencarian: <span className="font-bold">{query}</span>
+      </p>
       {isLoading && "Loading..."}
       <div>
         {data &&
           data?.items.map((item: any, idx: number) => {
             return (
-              <ul key={idx}>
-                <li>
-                  <Link href={`/cari/${item.owner.login}`}>
-                    {item.owner.login}
-                  </Link>
-                </li>
-                <li>
-                  <Link href={item.owner.repos_url}>Repository</Link>
-                </li>
-              </ul>
+              <>
+                <ListItemSearch
+                  key={idx}
+                  name={item.owner.login}
+                  imageUrl={item.owner.avatar_url}
+                  reposUrl={item.owner.repos_url}
+                />
+              </>
             );
           })}
       </div>
